@@ -1,0 +1,64 @@
+{
+    "metaDataVersion": "1.0.0",
+    "category": "com.microchip.ide.project",
+    "content": {
+        "metaDataVersion": "1.1.0",
+
+        "name": "com.microchip.mcu8.mplabx.project.myProject",
+        "version": "1.75.2",
+
+        "displayName": "Brushless Fan Speed Controller on a PIC18f57q43",
+        "projectName": "pic18f57q43-curiosity-nano-pwm-fan-control",
+
+        "shortDescription": "Code example used in the Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback application note.",
+
+        "ide": {
+            "name": "MPLABX",
+            "semverRange": ">=5.30.0"
+        },
+
+       "compiler": {
+            "name": "XC8",
+            "semverRange": "^5.30.0"
+        },
+
+        "dfp": {
+            "name": "ATtiny_DFP",
+            "semverRange": "^1.3.222"
+        },
+
+        "configurator": {
+            "name": "MCC",
+            "semverRange": ">=3.75.0"
+        },
+
+        "device": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.contentRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.device",
+                "name": "PIC18f57Q43",
+                "versionRange": "*"
+            }
+        },
+
+        "author": "Anne Other",
+
+        "subcategories": ["MCC", "BLDC", ["Peripherals", "ADCC"], ["Peripherals", "CCP"], ["Peripherals", "PWM"], ["Peripherals", "UART"]],
+        "peripherals": ["PWM", "UART", "CCP", "ADCC"],
+        "keywords": ["BLDC", "brushless dc", "fan", "tachometer", "MCC"],
+
+        "additionalData": {
+            "longDescription": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./README.md",
+                    "mimeType": "text/markdown"
+                }
+            }
+        }
+    }
+}
