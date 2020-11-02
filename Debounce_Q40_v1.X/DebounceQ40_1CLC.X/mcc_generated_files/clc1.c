@@ -61,8 +61,8 @@ void CLC1_Initialize(void)
     
     // SLCT 0; 
     CLCSELECT = 0x00;
-    // G1POL not_inverted; G2POL inverted; G3POL not_inverted; G4POL inverted; POL not_inverted; 
-    CLCnPOL = 0x0A;
+    // G1POL not_inverted; G2POL inverted; G3POL not_inverted; G4POL inverted; POL inverted; 
+    CLCnPOL = 0x8A;
     // D1S TMR2; 
     CLCnSEL0 = 0x10;
     // D2S TMR2; 
