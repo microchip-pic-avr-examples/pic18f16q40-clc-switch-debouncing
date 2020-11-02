@@ -55,7 +55,6 @@ Three possible solutions are provided, each using a varying number of CLCs. Any 
 3.	TMR2 and 3 CLCs  
 
 ## One CLC Solution
-***
 
 TMR2 automates the debouncing process using the monostable mode of operation. In this mode, the 1st logic edge from the switch being pressed is used to start the timer. The timer ignores any subsequent edges from the button. Once the timer counter reaches a predetermined value, the timer outputs a pulse.
 
@@ -93,7 +92,6 @@ Go to the Pin Module under Project Resources, and click on the check box for the
 **Figure 6**
 
 ## Two CLC Solution
-***
 
 Figure 7 shows the logic diagram of the 2 CLC solution.
 
@@ -143,10 +141,11 @@ Then, go to the Pin Module and click on the check box to enable the WPU for RC0 
 ![Figure 12](./images/Figure12.png)  
 **Figure 12**
 
-## Three CLC Solution
-***
+---
 
-The logic diagram of the 3-CLCs solution is shown in Figure 13. The 1st CLC (CLC3) has the same input as before (Figure 7). The 3rd CLC (CLC2) is chosen as 4-input AND logic. The input signal and the first two CLC output signals are paired ANDed and then ORed together as:
+## Three CLC Solution
+
+The logic diagram of the 3-CLCs solution is shown in Figure 13. The 1st CLC (CLC3) has the same input as before (previously shown in Figure 7). The 3rd CLC (CLC2) is chosen as 4-input AND logic. The input signal and the first two CLC output signals are paired ANDed and then ORed together as:
 
 CLC2_OUT = CLCIN0 * CLC3_OUT + CLCIN0 * CLC1_OUT + CLC3_OUT * CLC1_OUT
 
