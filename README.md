@@ -17,11 +17,11 @@ Typically, when a switch is activated, there is some period where the electrical
 
 ## Software Used
 
-* MPLAB® X IDE 5.40 or newer (microchip.com/mplab/mplab-x-ide)
-* MPLAB® XC8 2.20 or a newer compiler (microchip.com/mplab/compilers)
-* MPLAB® Code Configurator (MCC) 3.95.0 or newer (microchip.com/mplab/mplab-code-configurator)
-* MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs (microchip.com/mplab/mplab-code-configurator)
-* Microchip PIC18F-Q Series Device Support (1.5.124) or newer (packs.download.microchip.com/)
+* [MPLAB® X IDE 5.40 or newer](http://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB® XC8 2.30 or a newer compiler](http://www.microchip.com/mplab/compilers)
+* [MPLAB® Code Configurator (MCC) 3.95.0 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
+* [MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs](http://www.microchip.com/mplab/mplab-code-configurator)
+* [Microchip PIC18F-Q Series Device Support (1.5.124) or newer](http://www.packs.download.microchip.com/)
 
 ## Hardware Used
 
@@ -53,6 +53,8 @@ Three possible solutions are provided, each using a varying number of CLCs. Any 
 1.	TMR2 and 1 CLC
 2.	TMR2 and 2 CLCs
 3.	TMR2 and 3 CLCs  
+
+---
 
 ## One CLC Solution
 
@@ -90,6 +92,8 @@ Go to the Pin Module under Project Resources, and click on the check box for the
 
 ![Figure 6](./images/Figure6.png)  
 **Figure 6**
+
+---
 
 ## Two CLC Solution
 
