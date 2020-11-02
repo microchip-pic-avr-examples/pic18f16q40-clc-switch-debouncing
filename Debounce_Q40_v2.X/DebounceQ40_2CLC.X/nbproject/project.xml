@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Debounce_Q40_v3</name>
-            <creation-uuid>d27611b0-8ea5-42e6-ad1a-dfad1ea5fb94</creation-uuid>
+            <name>DebounceQ40_2CLC</name>
+            <creation-uuid>d30cec9d-6179-4a1a-a2e9-2c0a4a387b66</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
@@ -15,7 +15,11 @@
             <sourceRootList/>
             <confList>
                 <confElem>
-                    <name>default</name>
+                    <name>free</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>pro</name>
                     <type>2</type>
                 </confElem>
             </confList>
