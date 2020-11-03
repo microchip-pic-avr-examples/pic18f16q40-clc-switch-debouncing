@@ -46,7 +46,7 @@ In MPLAB X IDE, create a new project with PIC18 as the selected Device Family an
 Configure the system clock to 1 MHz under *Project Resource → System → System Module*. Select HFINTOSC for the Oscillator Select option as highlighted in the red circle in Figure 1. Make sure 4 is selected in the Clock Divider option. This will configure the system clock to 1 MHz.
 
 ![Figure 1](./images/Figure1.png)  
-**Figure 1**
+**Figure 1 - System Clock Settings Used**
 
 Three possible solutions are provided, each using a varying number of CLCs. Any of these solutions can be used for switch debouncing, however, the more CLCs are used, the more robust the solution becomes.
 
@@ -63,14 +63,22 @@ TMR2 automates the debouncing process using the monostable mode of operation. In
 The TMR2 output is used with a CLC as a toggle flip-flop in "JK flip-flop with R" mode of operation (Figure 2) where the TMR2 output acts as the clock input with J and K both kept at logic 1. Every output pulse from TMR2 toggles the output of the JK Flip-Flop when the switch is pressed or released.
 
 ![Figure 2](./images/Figure2.png)  
-**Figure 2**
+**Figure 2 - Logic Diagram (1 CLC Example)**
+
+## Benefits of this Solution
+
+The biggest benefit of this solution is the low peripheral count, only requiring a single CLC and TMR2.
+
+## Limitations of this Solution
+
+The biggest drawback of this solution is the lack of any glitch filtering. Once an edge on switch 0 has been detected, the timer will always provide a pulse to CLC 1 to invert the output. If this edge was caused by a momentary glitch that occured while the timer is idle, a pulse will be sent to the flip-flop, inverting the output levels until another glitch occurs.
 
 ### Timer Configuration
 
 On the left side, double-click TMR2 from the Device Resources section to add it to the Project Resources. Set the timer for monostable operation, with start/reset on both edges and the reset source should be set to T2INPPS. Then, select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range as per the application requirements.
 
 ![Figure 3](./images/Figure3.png)  
-**Figure 3**
+**Figure 3 - CLC Settings (1 CLC Example)**
 
 ### CLC Configuration
 
@@ -79,19 +87,19 @@ On the left side, double-click CLC1 from Device Resources to add it to the Proje
 Note: Setting every input to TMR2 will "unlock" the default CLCIN0 pin. For this code example, leaving the pin as is will not impact functionality.
 
 ![Figure 4](./images/Figure4.png)  
-**Figure 4**
+**Figure 4 - CLC Settings (1 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the Timer input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 5.
 
 ![Figure 5](./images/Figure5.png)  
-**Figure 5**
+**Figure 5 - Pin Assignments (1 CLC Example)**
 
 Go to the Pin Module under Project Resources, and click on the check box for the Weak Pull-Up (WPU) on pin RC0 as shown in Figure 6. This enables the internal weak pull-up resistors, which prevents the input from floating when the button is not pressed.
 
 ![Figure 6](./images/Figure6.png)  
-**Figure 6**
+**Figure 6 - Pin Settings Used (1 CLC Example)**
 
 ---
 
@@ -102,14 +110,26 @@ Figure 7 shows the logic diagram of the 2 CLC solution.
 Logically, 2 D flip-flops are created by the CLC3 and CLC1. The input signal of CLC3 is ANDed with the CLC3 output signal to become the input to CLC1. The TMR2 signal serves as clock for all of the CLCs.
 
 ![Figure 7](./images/Figure7.png)  
-**Figure 7**
+**Figure 7 - Logic Diagram (2 CLC Example)**
+
+## Benefits of this Solution
+
+This version of the solution adds a simple glitch filter to the debouncing logic. The debouncing logic differs from the single CLC solution.
+
+### Glitch Filtering
+
+If an active-high glitch occurs right before CLC3 latches, the AND gate would block it from propagating into CLC1. To latch into CLC1, the (active-high) glitch would have to latch into CLC3, then become/remain active during the next rising edge from TMR2 to successfully propagate through the AND gate and latch into CLC1.
+
+## Limitations of this Solution
+
+Besides the higher peripheral usage, the other downside of this example is a limitation of this glitch filter. Consider the case of an active-low glitch. The active-low signal bypasses CLC3 by forcing the AND gate to 0. CLC1 can latch the glitch and produce the wrong output, however it will recover to normal within a maximum of 2 clock cycles after the glitch has passed.
 
 ### Timer Configuration
 
 On the left side, double-click TMR2 from Device Resources to add them to Project Resources. Configure TMR2 to get a 1.5ms Timer Period as shown in Figure 8. Set the operating mode of TMR2 to "Roll over pulse" and the Start/Reset option to "Software control". Select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range, however 1.5ms works well in this example.
 
 ![Figure 8](./images/Figure8.png)  
-**Figure 8**
+**Figure 8 - Timer Settings (2 CLC Example)**
 
 ### CLC Configuration
 
@@ -120,7 +140,7 @@ On the left side, double-click CLC3 and CLC1 from the Device Resources section t
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLCIN0 as the input signal. Connect these two signals to the CLC logic gates 1 and 2 as shown in Figure 9.
 
 ![Figure 9](./images/Figure9.png)  
-**Figure 9**
+**Figure 9 - CLC1 Settings (2 CLC Example)**
 
 #### CLC3 Configuration
 
@@ -131,39 +151,73 @@ Select the `2-input D flip-flop with R` in the Mode field, TMR2 as the clock sig
 To implement this, invert CLCIN0 and CLC3 OUT into the OR gate, then invert the output (see Figure 10 for a visual representation). Connect the TMR2 signal to the CLC logic gate 1 to supply the clock signal.
 
 ![Figure 10](./images/Figure10.png)  
-**Figure 10**
+**Figure 10 - CLC3 Settings (2 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the CLCIN0 input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 11.
 
 ![Figure 11](./images/Figure11.png)  
-**Figure 11**
+**Figure 11 - Pin Assignments (2 CLC Example)**
 
 Then, go to the Pin Module and click on the check box to enable the WPU for RC0 as shown in Figure 12.
 
 ![Figure 12](./images/Figure12.png)  
-**Figure 12**
+**Figure 12 - Pin Settings Used (2 CLC Example)**
 
 ---
 
 ## Three CLC Solution
 
-The logic diagram of the 3-CLCs solution is shown in Figure 13. The 1st CLC (CLC3) has the same input as before (previously shown in Figure 7). The 3rd CLC (CLC2) is chosen as 4-input AND logic. The input signal and the first two CLC output signals are paired ANDed and then ORed together as:
+The logic diagram of the 3-CLCs solution is shown in Figure 13. The 1st CLC (CLC3) has the same input as before (previously shown in Figure 7). The 3rd CLC (CLC2) is chosen as 4-input AND logic. The input signal and the first two CLC output signals are not ORed (equivalent to NAND) and then NANDed together to the logic function:
 
-CLC2_OUT = CLCIN0 * CLC3_OUT + CLCIN0 * CLC1_OUT + CLC3_OUT * CLC1_OUT
+CLC2_OUT = (SW0 * CLC3_OUT) + (SW0 * CLC1_OUT) + (CLC3_OUT * CLC1_OUT))
 
-The output signal of the 3rd CLC provides the input signal to the 2nd CLC (CLC1). The 2nd CLC outputs the same debouncing signal as before. The 3rd CLC ensures no single LOW value on any of the three inputs will cause the debouncing output to go LOW.
+At every rising edge of the clock, the following occur:
+
+CLC2_OUT → CLC1_OUT (output)   
+SW0 → CLC3_OUT
+
+The table below shows the output of the logic function.
+
+*Note: LED output on Curiosity Nano is Active LOW.*
+
+| SW0 | CLC3_OUT | CLC1_OUT | Next CLC1 Value (and Debounced Output)
+|---- | -------- | -------- | --------
+| 0   | 0        | 0        | 0        
+| 0   | 0        | 1        | 0        
+| 0   | 1        | 0        | 0        
+| 0   | 1        | 1        | 1   
+| 1   | 0        | 0        | 0        
+| 1   | 0        | 1        | 1        
+| 1   | 1        | 0        | 1        
+| 1   | 1        | 1        | 1      
+
+**Table 1 - Output of CLC2**     
 
 ![Figure 13](./images/Figure13.png)  
-**Figure 13**
+**Figure 13 - Logic Diagram of the 3 CLC Solution**
+
+## Benefits of this Solution
+
+This solution is a much more advanced glitch filter than the 2 CLC example. This solution will only output "1" when 2 of the 3 signals are both 1. The 3 signal sources are:
+
+* Input Pin (SW0)
+* Latched Input Value (CLC3)
+* Current Output Value (CLC1)
+
+A glitch or bounce on the input pin will not affect the output immediately because the latched value and current state are unaffected. A glitch that occurs when CLC3 is latching is also unlikely to affect the logic. CLC3 would have a latched value that is incorrect, however the glitch would need to be active when the next rising edge occurs in order to latch the value into CLC 1.  
+
+## Limitations of this Solution
+
+The biggest limitation of this solution is the peripheral cost. This solution uses 3 CLCs and TMR2. In the PIC18-Q40 family, there are only 4 CLCs on the device. It may be possible to remove TMR2 from this example by using another peripheral or clock source for the example. 
 
 ### Timer Configuration
 
 On the left side, double-click TMR2 from Device Resources to include it in Project Resources. Configure TMR2 to get a 1.5ms Timer Period as shown in Figure 14. Select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range, however 1.5ms works well in this application.
 
 ![Figure 14](./images/Figure14.png)  
-**Figure 14**
+**Figure 14 - Timer 2 Settings (3 CLC Example)**
 
 ### CLC Configuration
 
@@ -174,7 +228,7 @@ On the left side, double-click CLC3, CLC2 and CLC1 from the Device Resources sec
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLC2 OUT (the output signal of CLC2) as an input signal to CLC1. Connect the TMR2 signal to the CLC logic gate 1 as shown in Figure 15.
 
 ![Figure 15](./images/Figure15.png)  
-**Figure 15**
+**Figure 15 - CLC 1 Settings (3 CLC Example)**
 
 #### CLC 2 Configuration
 
@@ -183,30 +237,30 @@ Configure CLC2 as shown in Figure 17. Select `4-input AND` in the Mode field. Se
  Make sure logic gates 2, 3, and 4 have the correct two inputs connected and properly inverted. This CLC functions to output 0 only if all 3 inputs are at a logic 1 - if any 2 pairs of values are at a logic 1, then an OR gate turns off, which shuts off the AND gate, which is inverted.
 
 ![Figure 16](./images/Figure16.png)  
-**Figure 16**
+**Figure 16 - CLC 2 Settings (3 CLC Example)**
 
 #### CLC 3 Configuration
 
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLCIN0 as the input signal. Connect these two signals to the CLC logic gates 1 and 2 respectively as shown in Figure 17.
 
 ![Figure 17](./images/Figure17.png)  
-**Figure 17**
+**Figure 17 - CLC 3 Settings (3 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the CLCIN0 input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 18.
 
 ![Figure 18](./images/Figure18.png)  
-**Figure 18**
+**Figure 18 - Pin Assignments (3 CLC Example)**
 
 Then, go to the Pin Module, click on the check box to enable the WPU for RC0 as shown in Figure 20.
 
 ![Figure 19](./images/Figure19.png)  
-**Figure 19**
+**Figure 19 - Pin Settings Used (3 CLC Example)**
 
 ## Operation
 
-For all examples, the LED output on RC0 will turn on (or off) while the pushbutton on RC0 is held down.
+For all examples, the LED output on RC0 will be on while the pushbutton on RC0 is held down.
 
 ## Summary
-TMR2 can be combined with CLCs for an excellent code-free switch debouncing . Introducing another stage of CLCs further improves the noise rejection  on the input signal, which reduces the possibility for unexpected debouncing to be recognized. The appropriate solution can be chosen based on the robustness required.
+TMR2 can be combined with CLCs for excellent code-free switch debouncing . Introducing another stage of CLCs further improves the noise rejection  on the input signal, which reduces the possibility for unexpected debouncing to be recognized. The appropriate solution can be chosen based on the robustness required.
