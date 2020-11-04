@@ -50,11 +50,11 @@
         ],
         "peripherals": [
             "CLC",
-            "TMR2",
+            "TMR2"
         ],
         "keywords": [
             "Configurable Logic Cell",
-            "Core Independent",
+            "Core Independent"
         ],
         "additionalData": {
             "longDescription": {
