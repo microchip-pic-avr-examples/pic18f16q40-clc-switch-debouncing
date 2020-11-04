@@ -41,7 +41,7 @@ A robust hardware-based solution to remove this bouncing can be created by using
 
 ## Setup
 
-*Note: You can download a copy of this repository, unzip the files, and open the project in MPLAB X under File → Open Project*
+*Note: You can download a copy of this repository, unzip the files, and open the projects in MPLAB X under File → Open Project*
 
 ### Setup from Scratch
 
@@ -269,4 +269,4 @@ Then, go to the Pin Module, click on the checkbox to enable the WPU for RC0 as s
 For all examples, the LED output on RC0 will be on while the pushbutton on RC0 is held down.
 
 ## Summary
-TMR2 can be combined with CLCs for excellent code-free switch debouncing . Adding more CLCs further improves the noise rejection  on the input signal, which reduces the possibility for unexpected debouncing to be recognized. The appropriate solution can be chosen based on the robustness required.
+TMR2 can be combined with CLCs for excellent code-free switch debouncing . Adding more CLCs further improves the noise rejection on the input signal, which reduces the possibility for unexpected debouncing to be recognized. The appropriate solution can be chosen based on the robustness required.
