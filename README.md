@@ -211,12 +211,11 @@ The table below shows the output of the logic function.
 | 1   | 1        | 0        | 1        
 | 1   | 1        | 1        | 1      
 
-**Table 1 - Output of CLC2**     
+**Table 1 - Output of CLC2**<br>
 
-<br>
 <img src="./images/Figure13.png" alt="Figure 13" width="500px"/><br>
 
-**Figure 13 - Logic Diagram of the 3 CLC Solution**
+**Figure 13 - Logic Diagram of the 3 CLC Solution**  
 
 ### Benefits of this Solution
 
