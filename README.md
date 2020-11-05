@@ -51,7 +51,7 @@ In the MPLAB X IDE, create a new project with PIC18 as the selected device famil
 
 Configure the system clock to 1 MHz by going to *Project Resources → System → System Module*. Select HFINTOSC for Oscillator Select, set the frequency to 4 MHz, and the clock divider to 4, as shown in Figure 1.  
 
-<img src="./images/Figure1.png" alt="Figure 1" width="500px"/>
+<img src="images/Figure1.png" alt="Figure 1" width="500px"/>  
 
 **Figure 1 - System Clock Settings Used**
 
