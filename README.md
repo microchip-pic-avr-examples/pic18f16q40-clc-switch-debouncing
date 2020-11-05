@@ -51,7 +51,8 @@ In the MPLAB X IDE, create a new project with PIC18 as the selected device famil
 
 Configure the system clock to 1 MHz by going to *Project Resources → System → System Module*. Select HFINTOSC for Oscillator Select, set the frequency to 4 MHz, and the clock divider to 4, as shown in Figure 1.
 
-![Figure 1](./images/Figure1.png)  
+<img src="./images/Figure1.png" alt="Figure 1" width="500px"/>
+
 **Figure 1 - System Clock Settings Used**
 
 Three possible versions of this project are provided, each using a varying number of CLCs. Any of these solutions can be used for switch debouncing, however, the more CLCs are used, the more robust the solution becomes.
@@ -68,7 +69,8 @@ TMR2 automates the debouncing process using the monostable mode of operation. In
 
 The TMR2 output is used with a CLC that is configured as a toggle flip-flop. The CLC is in the "JK flip-flop with R" mode of operation (Figure 2) where the TMR2 output acts as the clock input with J and K both kept at logic 1. Every output pulse from TMR2 inverts the output of the JK Flip-Flop.
 
-![Figure 2](./images/Figure2.png)  
+<img src="./images/Figure2.png" alt="Figure 2" width="500px"/>
+
 **Figure 2 - Logic Diagram (1 CLC Example)**
 
 ### Benefits of this Solution
@@ -83,7 +85,8 @@ The biggest drawback of this solution is the lack of any glitch filtering. Once 
 
 On the left side of the IDE, double-click TMR2 from the Device Resources section to add it to Project Resources. Set the timer for monostable operation, with start/reset on both edges and the reset source should be set to T2INPPS. Then, select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range as per the application requirements.
 
-![Figure 3](./images/Figure3.png)  
+<img src="./images/Figure3.png" alt="Figure 3" width="500px"/>
+
 **Figure 3 - CLC Settings (1 CLC Example)**
 
 ### CLC Configuration
@@ -92,19 +95,22 @@ On the left side, double-click CLC1 from Device Resources to add it to Project R
 
 Note: Setting every input to TMR2 will "unlock" the default CLCIN0 pin. For this code example, leaving the pin as is will not impact functionality.
 
-![Figure 4](./images/Figure4.png)  
+<img src="./images/Figure4.png" alt="Figure 4" width="500px"/>
+
 **Figure 4 - CLC Settings (1 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the Timer input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 5.
 
-![Figure 5](./images/Figure5.png)  
+<img src="./images/Figure5.png" alt="Figure 5" width="500px"/>
+
 **Figure 5 - Pin Assignments (1 CLC Example)**
 
 Go to the Pin Module under Project Resources, and click on the check box for the Weak Pull-Up (WPU) on pin RC0 as shown in Figure 6. This enables the internal weak pull-up resistors, which prevents the input from floating when the button is not pressed.
 
-![Figure 6](./images/Figure6.png)  
+<img src="./images/Figure6.png" alt="Figure 6" width="500px"/>
+
 **Figure 6 - Pin Settings Used (1 CLC Example)**
 
 ---
@@ -115,7 +121,8 @@ Figure 7 shows the logic diagram of the 2 CLC solution.
 
 Logically, 2 D flip-flops are created by CLC3 and CLC1. The input signal of CLC3 is ANDed with the CLC3 output to become the input to CLC1. The TMR2 signal serves as a very slow clock for all of the CLCs.
 
-![Figure 7](./images/Figure7.png)  
+<img src="./images/Figure7.png" alt="Figure 7" width="500px"/>
+
 **Figure 7 - Logic Diagram (2 CLC Example)**
 
 ### Benefits of this Solution
@@ -132,7 +139,8 @@ Besides the higher peripheral usage, the other downside of this example is a lim
 
 On the left side, double-click TMR2 from Device Resources to add them to Project Resources. Configure TMR2 to get a 1.5ms Timer Period as shown in Figure 8. Set the operating mode of TMR2 to "Roll over pulse" and the Start/Reset option to "Software control". Select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. Other timer periods may function correctly, however these should be evaluated on a case-by-case basis.
 
-![Figure 8](./images/Figure8.png)  
+<img src="./images/Figure8.png" alt="Figure 8" width="500px"/>
+
 **Figure 8 - Timer Settings (2 CLC Example)**
 
 ### CLC Configuration
@@ -143,7 +151,8 @@ On the left side of the IDE, double-click CLC3 and CLC1 from Device Resources to
 
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLCIN0 as the input signal. Connect these two signals to the CLC logic gates 1 and 2 as shown in Figure 9.
 
-![Figure 9](./images/Figure9.png)  
+<img src="./images/Figure9.png" alt="Figure 9" width="500px"/>
+
 **Figure 9 - CLC1 Settings (2 CLC Example)**
 
 #### CLC3 Configuration
@@ -154,19 +163,22 @@ Select the `2-input D flip-flop with R` in the Mode field, TMR2 as the clock sig
 
 To implement this, invert CLCIN0 and CLC3_OUT into the OR gate, then invert the output of this gate (see Figure 10 for a visual representation). Connect the TMR2 signal to logic gate 1 to supply the clock signal.
 
-![Figure 10](./images/Figure10.png)  
+<img src="./images/Figure10.png" alt="Figure 10" width="500px"/>
+
 **Figure 10 - CLC3 Settings (2 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the CLCIN0 input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 11.
 
-![Figure 11](./images/Figure11.png)  
+<img src="./images/Figure11.png" alt="Figure 11" width="500px"/>
+
 **Figure 11 - Pin Assignments (2 CLC Example)**
 
 Then, go to the Pin Module and click on the check box to enable the WPU for RC0 as shown in Figure 12.
 
-![Figure 12](./images/Figure12.png)  
+<img src="./images/Figure12.png" alt="Figure 12" width="500px"/>
+
 **Figure 12 - Pin Settings Used (2 CLC Example)**
 
 ---
@@ -201,7 +213,8 @@ The table below shows the output of the logic function.
 
 **Table 1 - Output of CLC2**     
 
-![Figure 13](./images/Figure13.png)  
+<img src="./images/Figure13.png" alt="Figure 13" width="500px"/>
+
 **Figure 13 - Logic Diagram of the 3 CLC Solution**
 
 ### Benefits of this Solution
@@ -222,7 +235,8 @@ The biggest limitation of this solution is the peripheral cost. This solution us
 
 On the left side, double-click TMR2 from Device Resources to include it in Project Resources. Configure TMR2 to get a 1.5ms Timer Period as shown in Figure 14. Select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. Other timer periods may function correctly, however these should be evaluated on a case-by-case basis.
 
-![Figure 14](./images/Figure14.png)  
+<img src="./images/Figure14.png" alt="Figure 14" width="500px"/>
+
 **Figure 14 - Timer 2 Settings (3 CLC Example)**
 
 ### CLC Configuration
@@ -233,7 +247,8 @@ On the left side, double-click CLC1, CLC2 and CLC3 from the Device Resources sec
 
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLC2_OUT (the output signal of CLC2) as an input signal to CLC1. Connect the TMR2 signal to the CLC logic gate 1 as shown in Figure 15.
 
-![Figure 15](./images/Figure15.png)  
+<img src="./images/Figure15.png" alt="Figure 15" width="500px"/>
+
 **Figure 15 - CLC 1 Settings (3 CLC Example)**
 
 #### CLC 2 Configuration
@@ -242,26 +257,30 @@ Configure CLC2 as shown in Figure 17. Select `4-input AND` in the Mode field. Se
 
  Make sure logic gates 2, 3, and 4 have the correct two inputs connected and properly inverted. This CLC functions to output 0 only if all 3 inputs are at a logic 1 - if any 2 pairs of values are at a logic 1, then an OR gate turns off, which shuts off the AND gate, which has an inverted output.
 
-![Figure 16](./images/Figure16.png)  
+ <img src="./images/Figure16.png" alt="Figure 16" width="500px"/>
+
 **Figure 16 - CLC 2 Settings (3 CLC Example)**
 
 #### CLC 3 Configuration
 
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLCIN0 as the input signal. Connect these two signals to the CLC logic gates 1 and 2 respectively as shown in Figure 17.
 
-![Figure 17](./images/Figure17.png)  
+<img src="./images/Figure17.png" alt="Figure 17" width="500px"/>
+
 **Figure 17 - CLC 3 Settings (3 CLC Example)**
 
 ### Pin Configuration
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the CLCIN0 input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 18.
 
-![Figure 18](./images/Figure18.png)  
+<img src="./images/Figure18.png" alt="Figure 18" width="500px"/>
+
 **Figure 18 - Pin Assignments (3 CLC Example)**
 
 Then, go to the Pin Module, click on the checkbox to enable the WPU for RC0 as shown in Figure 20.
 
-![Figure 19](./images/Figure19.png)  
+<img src="./images/Figure19.png" alt="Figure 19" width="500px"/> 
+
 **Figure 19 - Pin Settings Used (3 CLC Example)**
 
 ## Operation
