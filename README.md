@@ -51,7 +51,7 @@ In the MPLAB X IDE, create a new project with PIC18 as the selected device famil
 
 Configure the system clock to 1 MHz by going to *Project Resources → System → System Module*. Select HFINTOSC for Oscillator Select, set the frequency to 4 MHz, and the clock divider to 4, as shown in Figure 1.
 
-<img src="./images/Figure1.png" alt="Figure 1" width="500px"/>
+<img src="images/Figure1.png" alt="Figure 1" width="500px"/>
 
 **Figure 1 - System Clock Settings Used**
 
@@ -279,7 +279,7 @@ Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to 
 
 Then, go to the Pin Module, click on the checkbox to enable the WPU for RC0 as shown in Figure 20.
 
-<img src="./images/Figure19.png" alt="Figure 19" width="500px"/> 
+<img src="./images/Figure19.png" alt="Figure 19" width="500px"/>
 
 **Figure 19 - Pin Settings Used (3 CLC Example)**
 
