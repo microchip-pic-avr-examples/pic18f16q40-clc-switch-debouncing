@@ -1,6 +1,9 @@
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 # Switch Debouncing with the PIC18F16Q40
-Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce  before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.
+Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce  before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.  
+
+<img src="images/switch_bouncing.jpg" alt="Bouncing Switch" width="500px"/><br>  
+
 
 A robust hardware-based solution to remove this bouncing can be created by using Timer 2 (TMR2) and a few of the Configurable Logic Cells (CLCs). This code example runs on the PIC18F16Q40 device to implement a software-less, hardware-based switch debouncing.
 
