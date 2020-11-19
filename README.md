@@ -20,11 +20,11 @@ A robust hardware-based solution to remove this bouncing can be created by using
 
 ## Software Used
 
-* [MPLAB® X IDE 5.40 or newer](http://www.microchip.com/mplab/mplab-x-ide)
-* [MPLAB® XC8 2.30 or a newer compiler](http://www.microchip.com/mplab/compilers)
-* [MPLAB® Code Configurator (MCC) 3.95.0 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
-* [MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs](http://www.microchip.com/mplab/mplab-code-configurator)
-* [Microchip PIC18F-Q Series Device Support (1.5.124) or newer](http://www.packs.download.microchip.com/)
+* [MPLAB® X IDE v5.40 or newer](http://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB® XC8 v2.30 or a newer compiler](http://www.microchip.com/mplab/compilers)
+* [MPLAB® Code Configurator (MCC) v3.95.0 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
+* [MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs v1.81.6 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
+* [Microchip PIC18F-Q Series Device Support v1.5.124 or newer](http://www.packs.download.microchip.com/)
 
 ## Hardware Used
 
