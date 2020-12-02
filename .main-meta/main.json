@@ -4,9 +4,9 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f16q40-clc-switch-debouncing",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "displayName": "PIC18F16Q40 - Switch Debouncing with TMR2 and CLC(s)",
-        "projectName": "DebounceQ40_2CLC",
+        "projectName": "pic18f16q40-clc-switch-debouncing",
         "shortDescription": "This project shows 3 ways to debounce a switch using TMR2 and (1, 2, or 3) CLCs",
         "ide": {
             "name": "MPLAB X",
@@ -53,6 +53,7 @@
             "TMR2"
         ],
         "keywords": [
+            "Human Interface",
             "Configurable Logic Cell",
             "Core Independent"
         ],
