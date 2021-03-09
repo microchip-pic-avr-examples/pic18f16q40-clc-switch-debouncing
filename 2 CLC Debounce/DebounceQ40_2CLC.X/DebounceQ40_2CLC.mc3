@@ -1,4 +1,4 @@
-<config configVersion="1.1" device="PIC18F16Q40" coreVersion="5.1.0-i">
+<config configName="pro" projectName="DebounceQ40_2CLC" configVersion="1.1" device="PIC18F16Q40" coreVersion="5.1.0-n">
    <usedClasses class="java.util.TreeMap">
       <entry>
          <string>Application Builder</string>
