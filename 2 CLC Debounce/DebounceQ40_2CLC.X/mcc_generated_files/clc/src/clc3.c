@@ -90,8 +90,8 @@ void CLC3_Initialize(void)
     CLCnGLS3 = 0x0;
     // LCOUT 0x00; 
     CLCDATA = 0x0;
-    // LCMODE AND-OR; LCINTN disabled; LCINTP disabled; LCEN enabled; 
-    CLCnCON = 0x80;
+    // LCMODE 2-input D flip-flop with R; LCINTN disabled; LCINTP disabled; LCEN enabled; 
+    CLCnCON = 0x85;
 
 }
 

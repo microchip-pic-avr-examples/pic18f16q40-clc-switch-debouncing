@@ -74,8 +74,8 @@ void CLC1_Initialize(void)
     CLCnPOL = 0x0;
     // LCD1S TMR2; 
     CLCnSEL0 = 0x10;
-    // LCD2S CLC2_OUT; 
-    CLCnSEL1 = 0x23;
+    // LCD2S CLCIN0 (CLCIN0PPS); 
+    CLCnSEL1 = 0x0;
     // LCD3S CLCIN0 (CLCIN0PPS); 
     CLCnSEL2 = 0x0;
     // LCD4S CLCIN0 (CLCIN0PPS); 
