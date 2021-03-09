@@ -57,7 +57,7 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 
 //CONFIG1
 #pragma config FEXTOSC = OFF     // External Oscillator Mode Selection->Oscillator not enabled
-#pragma config RSTOSC = EXTOSC     // Power-up Default Value for COSC->EXTOSC operating per FEXTOSC bits (device manufacturing default)
+#pragma config RSTOSC = HFINTOSC_64MHZ     // Power-up Default Value for COSC->HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1
 
 //CONFIG2
 #pragma config FCMENP = ON     // Fail-Safe Clock Monitor Enable - Primary XTAL Enable->Fail-Safe Clock Monitor enabled; timer will flag FSCMP bit and OSFIF interrupt on EXTOSC failure.
@@ -65,10 +65,10 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 #pragma config FCMEN = ON     // Fail-Safe Clock Monitor Enable->Fail-Safe Clock Monitor enabled
 #pragma config CSWEN = ON     // Clock Switch Enable->Writing to NOSC and NDIV is allowed
 #pragma config FCMENS = ON     // Fail-Safe Clock Monitor Enable - Secondary XTAL Enable->Fail-Safe Clock Monitor enabled; timer will flag FSCMP bit and OSFIF interrupt on SOSC failure.
-#pragma config PR1WAY = OFF     // PRLOCKED One-Way Set Enable->PRLOCKED bit can be set and cleared repeatedly
+#pragma config PR1WAY = ON     // PRLOCKED One-Way Set Enable->PRLOCKED bit can be cleared and set only once
 
 //CONFIG3
-#pragma config MVECEN = ON     // Multivector Enable->Multi-vector enabled, Vector table used for interrupts
+#pragma config MVECEN = OFF     // Multivector Enable->Interrupt contoller does not use vector table to prioritze interrupts
 #pragma config MCLRE = EXTMCLR     // Master Clear (MCLR) Enable->If LVP = 0, MCLR pin is MCLR; If LVP = 1, RE3 pin function is MCLR 
 #pragma config BOREN = SBORDIS     // Brown-out Reset Enable->Brown-out Reset enabled , SBOREN bit is ignored
 #pragma config PWRTS = PWRT_OFF     // Power-up Timer Selection->PWRT is disabled

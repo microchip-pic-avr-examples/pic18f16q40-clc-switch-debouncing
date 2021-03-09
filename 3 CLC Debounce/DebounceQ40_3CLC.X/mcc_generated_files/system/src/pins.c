@@ -114,6 +114,7 @@ void PIN_MANAGER_Initialize(void)
     IOCCN = 0x0;
     IOCCF = 0x0;
 
+
 }
   
 void PIN_MANAGER_IOC(void)

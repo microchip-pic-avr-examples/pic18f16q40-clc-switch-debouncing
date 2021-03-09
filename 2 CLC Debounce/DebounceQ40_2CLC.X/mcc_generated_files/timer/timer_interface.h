@@ -13,7 +13,7 @@
     Generation Information :
         Driver Version    :  1.0.0
     The generated drivers are tested against the following:
-        MPLAB             :  MPLAB X v5.45 and above
+        MPLAB             :  MPLAB X v5.45
 */
 
 /*
@@ -54,7 +54,7 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 #define TMR_INTERFACE_H
 
 /**
- * @brief This file contains API prototypes and other datatypes for Timer-0 module.
+ * @brief This file contains API prototypes and other datatypes for Timer module.
  * @defgroup timer_interface Timer Interface
  * @{
  */

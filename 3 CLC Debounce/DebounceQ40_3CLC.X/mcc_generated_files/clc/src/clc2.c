@@ -70,8 +70,6 @@ void CLC2_Initialize(void)
     
     // SLCT 0x1; 
     CLCSELECT = 0x1;
-    // LCMODE 4-input AND; LCINTN disabled; LCINTP disabled; LCEN enabled; 
-    CLCnCON = 0x82;
     // LCG1POL inverted; LCG2POL not_inverted; LCG3POL not_inverted; LCG4POL not_inverted; LCPOL inverted; 
     CLCnPOL = 0x81;
     // LCD1S CLCIN0 (CLCIN0PPS); 
@@ -92,6 +90,8 @@ void CLC2_Initialize(void)
     CLCnGLS3 = 0x10;
     // LCOUT 0x00; 
     CLCDATA = 0x0;
+    // LCMODE 4-input AND; LCINTN disabled; LCINTP disabled; LCEN enabled; 
+    CLCnCON = 0x82;
 
 }
 

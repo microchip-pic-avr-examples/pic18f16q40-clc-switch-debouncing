@@ -70,8 +70,6 @@ void CLC1_Initialize(void)
     
     // SLCT 0x0; 
     CLCSELECT = 0x0;
-    // LCMODE JK flip-flop with R; LCINTN disabled; LCINTP disabled; LCEN enabled; 
-    CLCnCON = 0x86;
     // LCG1POL not_inverted; LCG2POL inverted; LCG3POL not_inverted; LCG4POL inverted; LCPOL inverted; 
     CLCnPOL = 0x8A;
     // LCD1S TMR2; 
@@ -92,6 +90,8 @@ void CLC1_Initialize(void)
     CLCnGLS3 = 0x0;
     // LCOUT 0x00; 
     CLCDATA = 0x0;
+    // LCMODE JK flip-flop with R; LCINTN disabled; LCINTP disabled; LCEN enabled; 
+    CLCnCON = 0x86;
 
 }
 

@@ -70,14 +70,12 @@ void CLC1_Initialize(void)
     
     // SLCT 0x0; 
     CLCSELECT = 0x0;
-    // LCMODE 2-input D flip-flop with R; LCINTN disabled; LCINTP disabled; LCEN enabled; 
-    CLCnCON = 0x85;
     // LCG1POL not_inverted; LCG2POL not_inverted; LCG3POL not_inverted; LCG4POL not_inverted; LCPOL not_inverted; 
     CLCnPOL = 0x0;
     // LCD1S TMR2; 
     CLCnSEL0 = 0x10;
-    // LCD2S CLCIN0 (CLCIN0PPS); 
-    CLCnSEL1 = 0x0;
+    // LCD2S CLC2_OUT; 
+    CLCnSEL1 = 0x23;
     // LCD3S CLCIN0 (CLCIN0PPS); 
     CLCnSEL2 = 0x0;
     // LCD4S CLCIN0 (CLCIN0PPS); 
@@ -92,6 +90,8 @@ void CLC1_Initialize(void)
     CLCnGLS3 = 0x0;
     // LCOUT 0x00; 
     CLCDATA = 0x0;
+    // LCMODE 2-input D flip-flop with R; LCINTN disabled; LCINTP disabled; LCEN enabled; 
+    CLCnCON = 0x85;
 
 }
 
