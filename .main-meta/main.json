@@ -6,7 +6,7 @@
         "name": "com.microchip.mcu8.mplabx.project.pic18f16q40-clc-switch-debouncing",
         "version": "2.0.0",
         "displayName": "PIC18F16Q40 - Switch Debouncing with TMR2 and CLC(s)",
-        "projectName": "pic18f16q40-clc-switch-debouncing", 
+        "projectName": "pic18f16q40-clc-switch-debouncing",
         "shortDescription": "This project shows 3 ways to debounce a switch using TMR2 and (1, 2, or 3) CLCs",
         "ide": {
             "name": "MPLAB X",
@@ -15,16 +15,16 @@
         "compiler": [
             {
                 "name": "XC8",
-                "semverRange": "^2.30.0"
+                "semverRange": "^2.31.0"
             }
         ],
         "dfp": {
             "name": "PIC18F-Q_DFP",
-            "semverRange": "^1.8.154"
+            "semverRange": "^1.9.175"
         },
         "configurator": {
             "name": "MCC",
-            "semverRange": ">=5.1.0"
+            "semverRange": ">=4.1.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
