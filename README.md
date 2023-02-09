@@ -33,6 +33,7 @@ A robust hardware-based solution to remove this bouncing can be created by using
 ## Table of Contents
 
 * [Setup](#setup)
+* [Configuration Bit Setup](#configuration-bit-setup)
 * [Clock Configuration](#clock-configuration)
 * [One CLC Solution](#one-clc-solution)
 * [Two CLC Solution](#two-clc-solution)
@@ -48,11 +49,17 @@ A robust hardware-based solution to remove this bouncing can be created by using
 
 In the MPLAB X IDE, create a new project with PIC18 as the selected device family and [PIC18F16Q40](https://www.microchip.com/wwwproducts/en/PIC18F16Q40) as the selected device. If plugged in, set the Hardware Tools to the Curiosity Nano. Select the compiler as XC8 (v2.30 was used). When the project is created, click on the MPLAB Code Configuration (MCC) logo on the top menu bar to begin setting up the code. MCC is used to configure the following peripherals. Refer to the MPLAB X project for details and settings for each component.
 
+### Configuration Bit Setup
+
+For proper operation, go to *Project Resources &rarr; Configuration Bits* . Set *External Oscillator Mode Selection* to *Oscillator not enabled* and set *Power-up Default Value for COSC* to *HFINTOSC with HFFRQ = 4 MHz...*
+
+![Config Bit Setup](./images/ConfigBitSetup.PNG)  
+
 ### Clock Configuration
 
 Configure the system clock to 1 MHz by going to *Project Resources → System → System Module*. Select HFINTOSC for Oscillator Select, set the frequency to 4 MHz, and the clock divider to 4, as shown in Figure 1.<br>
 
-<img src="images/Figure1.png" alt="Figure 1" width="500px"/><br>  
+![Figure 1](./images/Figure1.png)  
 
 **Figure 1 - System Clock Settings Used**
 
@@ -70,7 +77,7 @@ TMR2 automates the debouncing process using the monostable mode of operation. In
 
 The TMR2 output is used with a CLC that is configured as a toggle flip-flop. The CLC is in the "JK flip-flop with R" mode of operation (Figure 2) where the TMR2 output acts as the clock input with J and K both kept at logic 1. Every output pulse from TMR2 inverts the output of the JK Flip-Flop.<br>
 
-<img src="./images/Figure2.png" alt="Figure 2" width="500px"/><br>
+![Figure 2](./images/Figure2.png)
 
 **Figure 2 - Logic Diagram (1 CLC Example)**
 
@@ -84,19 +91,17 @@ The biggest drawback of this solution is the lack of any glitch filtering. Once 
 
 ### Timer Configuration
 
-On the left side of the IDE, double-click TMR2 from the Device Resources section to add it to Project Resources. Set the timer for monostable operation, with start/reset on both edges and the reset source should be set to T2INPPS. Then, select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range as per the application requirements.<br>
+On the left side of the IDE, double-click TMR2 from the Device Resources section to add it to Project Resources. Set the timer for monostable operation, with start/reset on both edges and the reset source should be set to T2INPPS. Then, select LFINTOSC as the clock source. Set the prescaler to 1:4 and type in 1.5ms in the Timer Period field. The timer period can be set to any value within the range as per the application requirements.<br>
 
-<img src="./images/Figure3.png" alt="Figure 3" width="500px"/><br>
+![Figure 3](./images/Figure3.png)  
 
 **Figure 3 - CLC Settings (1 CLC Example)**
 
 ### CLC Configuration
 
-On the left side, double-click CLC1 from Device Resources to add it to Project Resources. Configure CLC1 as shown in Figure 4. Select "JK flip-flop with R" in the mode field and TMR2 as the clock signal to the J-K Flip-Flop register. Tie both J and K inputs of the JK Flip-Flop high by inverting the outputs of the associated OR Gates by clicking inside of the dashed box on the output.
+On the left side, double-click CLC1 from Device Resources to add it to Project Resources. Configure CLC1 as shown in Figure 4. Select "JK flip-flop with R" in the mode field and TMR2 as the clock signal to the J-K Flip-Flop register. Tie both J and K inputs of the JK Flip-Flop high by inverting the outputs of the associated OR Gates by clicking inside of the dashed box on the output. The output of the CLC can also be inverted to match the inverse polarity of the button logic (High = Open, Low = Closed).
 
-Note: Setting every input to TMR2 will "unlock" the default CLCIN0 pin. For this code example, leaving the pin as is will not impact functionality.<br>
-
-<img src="./images/Figure4.png" alt="Figure 4" width="500px"/><br>
+![Figure 4](./images/Figure4.png)  
 
 **Figure 4 - CLC Settings (1 CLC Example)**
 
@@ -104,13 +109,13 @@ Note: Setting every input to TMR2 will "unlock" the default CLCIN0 pin. For this
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the Timer input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 5.<br>
 
-<img src="./images/Figure5.png" alt="Figure 5" width="500px"/><br>
+![Figure 5](./images/Figure5.png)  
 
 **Figure 5 - Pin Assignments (1 CLC Example)**
 
-Go to the Pin Module under Project Resources, and click on the check box for the Weak Pull-Up (WPU) on pin RC0 as shown in Figure 6. This enables the internal weak pull-up resistors, which prevents the input from floating when the button is not pressed.<br>
+Click on Pins under Project Resources, and click on the check box for the Weak Pull-Up (WPU) on pin RC0 as shown in Figure 6. This enables the internal weak pull-up resistors, which prevents the input from floating when the button is not pressed. The analog option for RC1 should also be unchecked.
 
-<img src="./images/Figure6.png" alt="Figure 6" width="500px"/><br>
+![Figure 6](./images/Figure6.png)  
 
 **Figure 6 - Pin Settings Used (1 CLC Example)**
 
@@ -286,7 +291,9 @@ Then, go to the Pin Module, click on the checkbox to enable the WPU for RC0 as s
 
 ## Operation
 
-For all examples, the LED output on RC0 will be on while the pushbutton on RC0 is held down.
+For all examples, the LED output on RC0 will be on while the pushbutton on RC0 is held down. 
+
+Note: Parasitic capacitance plus the Weak Pullup (WPU) of the I/O make it difficult to generate a bounce directly on the nano. Bounces can be easily generated for testing by connecting a piece of wire to ground and tapping it on the input pin. 
 
 ## Summary
 TMR2 can be combined with CLCs for excellent code-free switch debouncing. Adding more CLCs further improves the noise rejection on the input signal, which reduces the possibility for unexpected debouncing to be recognized. The appropriate solution can be chosen based on the robustness required.
