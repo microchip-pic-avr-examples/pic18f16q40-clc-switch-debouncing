@@ -1,34 +1,27 @@
-<a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
+<a href="https://microchip.com?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 # Switch Debouncing with the PIC18F16Q40
 Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce  before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.  
 
 <img src="images/switch_bouncing.jpg" alt="Bouncing Switch" width="500px"/><br>  
 
-
 A robust hardware-based solution to remove this bouncing can be created by using Timer 2 (TMR2) and a few of the Configurable Logic Cells (CLCs). This code example runs on the PIC18F16Q40 device to implement a software-less, hardware-based switch debouncing.
 
 ## Related Documentation
 
-* [Robust Debouncing with Core-Independent peripherals (AN2805)](http://ww1.microchip.com/downloads/en/DeviceDoc/AN2805-Robust-Debounc-Core-Inddep-Periph-DS00002805A.pdf)
-* [Delay Block/Debouncer (AN1450)](http://www.microchip.com/wwwAppNotes/AppNotes.aspx?appnote=en559138)
-* [Configurable Logic Cell Tips ’n Tricks](https://ww1.microchip.com/downloads/en/devicedoc/41631b.pdf)
-* [Audio Recording and Playback Using Direct Memory Access and Core Independent Peripherals (AN3548)](http://www.microchip.com/wwwappnotes/appnotes.aspx?appnote=en1003018)
-
-## Related Examples
-
-* [Code Free Switch Debounce using TMR2 with HLT](https://microchipdeveloper.com/xpress:code-free-switch-debounce-using-tmr2-with-hlt)
+* [Robust Debouncing with Core-Independent peripherals (AN2805)](https://www.microchip.com/en-us/application-notes/an2805?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [Delay Block/Debouncer (AN1450)](https://www.microchip.com/en-us/application-notes/an1450?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [Configurable Logic Cell Tips ’n Tricks](https://ww1.microchip.com/downloads/en/devicedoc/41631b.pdf)  
 
 ## Software Used
 
-* [MPLAB® X IDE v5.45 or newer](http://www.microchip.com/mplab/mplab-x-ide)
-* [MPLAB® XC8 v2.31 or a newer compiler](http://www.microchip.com/mplab/compilers)
-* [MPLAB® Code Configurator (MCC) v4.1.0 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
-* [Code Configurator Library v1.37 or newer](http://www.microchip.com/mplab/mplab-code-configurator)
-* [Microchip PIC18F-Q Series Device Support v1.9.175 or newer](http://www.packs.download.microchip.com/)
+* [MPLAB® X IDE v6.0.5 or newer](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [MPLAB® XC8 v2.40 or a newer compiler](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [MPLAB® Code Configurator (MCC)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [Microchip PIC18F-Q Series Device Support v1.15.360 or newer](http://www.packs.download.microchip.com/)
 
 ## Hardware Used
 
-[PIC18F16Q40 Curiosity Nano Evaluation Kit (EV70C97A)](https://www.microchip.com/DevelopmentTools/ProductDetails/EV70C97A)
+* [PIC18F16Q40 Curiosity Nano Evaluation Kit (EV70C97A)](https://www.microchip.com/en-us/development-tool/EV70C97A?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
 
 ## Table of Contents
 
@@ -47,7 +40,7 @@ A robust hardware-based solution to remove this bouncing can be created by using
 
 ### Setup from Scratch
 
-In the MPLAB X IDE, create a new project with PIC18 as the selected device family and [PIC18F16Q40](https://www.microchip.com/wwwproducts/en/PIC18F16Q40) as the selected device. If plugged in, set the Hardware Tools to the Curiosity Nano. Select the compiler as XC8 (v2.30 was used). When the project is created, click on the MPLAB Code Configuration (MCC) logo on the top menu bar to begin setting up the code. MCC is used to configure the following peripherals. Refer to the MPLAB X project for details and settings for each component.
+In the MPLAB X IDE, create a new project with PIC18 as the selected device family and [PIC18F16Q40](https://www.microchip.com/en-us/product/PIC18F16Q40?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github) as the selected device. If plugged in, set the Hardware Tools to the Curiosity Nano. Select the compiler as XC8 (v2.30 was used). When the project is created, click on the MPLAB Code Configuration (MCC) logo on the top menu bar to begin setting up the code. MCC is used to configure the following peripherals. Refer to the MPLAB X project for details and settings for each component.
 
 ### Configuration Bit Setup
 
