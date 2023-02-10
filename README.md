@@ -127,7 +127,7 @@ Figure 7 shows the logic diagram of the 2 CLC solution.
 
 Logically, 2 D flip-flops are created by CLC3 and CLC1. The input signal of CLC3 is ANDed with the CLC3 output to become the input to CLC1. The TMR2 signal serves as a very slow clock for all of the CLCs.<br>
 
-<img src="./images/Figure7.png" alt="Figure 7" width="500px"/><br>
+![Figure 7](./images/Figure7.png)
 
 **Figure 7 - Logic Diagram (2 CLC Example)**
 
@@ -145,7 +145,7 @@ Besides the higher peripheral usage, the other downside of this example is a lim
 
 On the left side, double-click TMR2 from Device Resources to add them to Project Resources. Configure TMR2 to get a 1.5ms Timer Period as shown in Figure 8. Set the operating mode of TMR2 to "Roll over pulse" and the Start/Reset option to "Software control". Select LFINTOSC as the clock source and type in 1.5ms in the Timer Period field. Other timer periods may function correctly, however these should be evaluated on a case-by-case basis.<br>
 
-<img src="./images/Figure8.png" alt="Figure 8" width="500px"/><br>
+![Figure 8](./images/Figure8.png)  
 
 **Figure 8 - Timer Settings (2 CLC Example)**
 
@@ -157,7 +157,7 @@ On the left side of the IDE, double-click CLC3 and CLC1 from Device Resources to
 
 Select `2-input D flip-flop with R` in the Mode field, TMR2 as the clock signal to the D Flip-Flop register, and CLCIN0 as the input signal. Connect these two signals to the CLC logic gates 1 and 2 as shown in Figure 9.<br>
 
-<img src="./images/Figure9.png" alt="Figure 9" width="500px"/><br>
+![Figure 9](./images/Figure9.png)  
 
 **Figure 9 - CLC1 Settings (2 CLC Example)**
 
@@ -169,7 +169,7 @@ Select the `2-input D flip-flop with R` in the Mode field, TMR2 as the clock sig
 
 To implement this, invert CLCIN0 and CLC3_OUT into the OR gate, then invert the output of this gate (see Figure 10 for a visual representation). Connect the TMR2 signal to logic gate 1 to supply the clock signal.<br>
 
-<img src="./images/Figure10.png" alt="Figure 10" width="500px"/><br>
+![Figure 10](./images/Figure10.png)  
 
 **Figure 10 - CLC3 Settings (2 CLC Example)**
 
@@ -177,13 +177,13 @@ To implement this, invert CLCIN0 and CLC3_OUT into the OR gate, then invert the 
 
 Navigate to the Pin Manager and connect on-board switch, located on pin RC0, to the CLCIN0 input and connect the CLC1 output to the on-board LED, located on pin RC1, as shown in the Figure 11.<br>
 
-<img src="./images/Figure11.png" alt="Figure 11" width="500px"/><br>
+![Figure 11](./images/Figure11.png)  
 
 **Figure 11 - Pin Assignments (2 CLC Example)**
 
-Then, go to the Pin Module and click on the check box to enable the WPU for RC0 as shown in Figure 12.<br>
+Then, go to the Pin Module and click on the check box to enable the WPU for RC0 as shown in Figure 12.  Analog can be unchecked for the output on RC1 as well.  
 
-<img src="./images/Figure12.png" alt="Figure 12" width="500px"/><br>
+![Figure 12](./images/Figure12.png)  
 
 **Figure 12 - Pin Settings Used (2 CLC Example)**
 
