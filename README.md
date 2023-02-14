@@ -1,10 +1,10 @@
 <a href="https://microchip.com?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 # Switch Debouncing with the PIC18F16Q40
-Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce  before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.  
+Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.  
 
 <img src="images/switch_bouncing.jpg" alt="Bouncing Switch" width="500px"/><br>  
 
-A robust hardware-based solution to remove this bouncing can be created by using Timer 2 (TMR2) and a few of the Configurable Logic Cells (CLCs). This code example runs on the PIC18F16Q40 device to implement a software-less, hardware-based switch debouncing.
+A robust hardware-based solution to remove this bouncing can be created by using Timer 2 (TMR2) and a few of the Configurable Logic Cells (CLCs). This code example runs on the PIC18F16Q40 device to implement a softwareless, hardware-based switch debouncing.
 
 ## Related Documentation
 
@@ -15,8 +15,8 @@ A robust hardware-based solution to remove this bouncing can be created by using
 ## Software Used
 
 * [MPLAB® X IDE v6.0.5 or newer](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
-* [MPLAB® XC8 v2.40 or a newer compiler](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
-* [MPLAB® Code Configurator (MCC)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [MPLAB XC8 v2.40 or a newer compiler](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
+* [MPLAB Code Configurator (MCC)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github)
 * [Microchip PIC18F-Q Series Device Support v1.15.360 or newer](http://www.packs.download.microchip.com/)
 
 ## Hardware Used
@@ -36,7 +36,7 @@ A robust hardware-based solution to remove this bouncing can be created by using
 
 ## Setup
 
-*Note: You can download a copy of this repository, unzip the files, and open the projects in MPLAB X under File → Open Project*
+*Note: Download a copy of this repository, unzip the files, and open the projects in MPLAB X under File → Open Project*
 
 ### Setup from Scratch
 
