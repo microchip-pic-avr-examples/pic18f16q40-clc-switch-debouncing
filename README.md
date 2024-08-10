@@ -1,4 +1,4 @@
-<a href="https://microchip.com?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
+ <a href="https://microchip.com?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q40&utm_content=pic18f16q40-clc-switch-debouncing-github" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 # Switch Debouncing with the PIC18F16Q40
 Typically, when a switch is actuated, there is a period of time during which the electrical contacts within the switch will bounce before settling. This causes the digital waveform for the switch to become momentarily unstable, which may cause logic that depends on the state of the switch to malfunction.  
 
